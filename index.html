@@ -44,12 +44,13 @@
           }
 
 
-           axios.post("http://localhost:3000/users/signup",obj)
+           axios.post("http://localhost:3000/users/signup-user",obj)
            .then((response)=>{
              console.log(response)
            }).catch((err) =>{
-            document.body.innerHTML= document.body.innerHTML+ "<h4>Something Went Wrong</h4>"
-              console.log(err)
+            console.log(err)
+            document.body.innerHTML= document.body.innerHTML+ "<h4>Error: User Already Exist</h4>"
+              
            })
           }
 
