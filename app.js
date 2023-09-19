@@ -11,6 +11,7 @@ const signupRoutes = require('./routes/signup');
 
 const app = express();
 
+
 app.use(cors())
 
 app.use(bodyParser.json({ extended: false }));

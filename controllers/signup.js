@@ -6,7 +6,6 @@ exports.signupUsers= async(req, res, next)=>{
     const email= req.body.email;
     const pwd= req.body.pwd;
 
-
     const data= await Users.create({name:name, email:email, pwd:pwd})
     
     res.status(201).json(data);  
