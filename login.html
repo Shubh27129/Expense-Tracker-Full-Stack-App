@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker-login</title>
+</head>
+<body>
+    <section class="container">
+        <form onsubmit="Login(event)" id="my-form">
+           
+            <div>
+                <label for="email">Enter your Email: </label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div>
+                <label for="pwd">Enter Password: </label>
+                <input type="password" name="pwd" id="pwd" required>
+            </div>
+            <input type="submit" value="Login" class="btn">
+        </form>
+        <a href="./index.html">New User: Sign Up Now</a>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+
+    <script>
+          function Login(e)
+          {
+            e.preventDefault();
+            
+                
+                const email= e.target.email.value
+                const pwd= e.target.pwd.value
+
+                const obj={
+                  email,
+                  pwd
+                }
+                
+
+           axios.post("http://localhost:3000/users/login",obj)
+           .then((response)=>{
+            console.log(response)
+                alert(response.data.message)
+            
+           }).catch((err) =>{
+            console.log(err)
+            document.body.innerHTML= document.body.innerHTML+ "<h4>Error: login related</h4>"
+              
+           })
+          }
+
+         
+
+          
+    </script>
+
+</body>
+</html>
