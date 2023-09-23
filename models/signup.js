@@ -15,10 +15,7 @@ const Users = sequelize.define('users', {
         unique: true
         
     },
-    pwd:{
-        type: Sequelize.INTEGER,
-        
-    }
+    pwd:  Sequelize.STRING,   
 });
 
 
