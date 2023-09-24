@@ -3,10 +3,6 @@ const Users= require('../models/signup')
 const bcrypt = require('bcrypt');
 
 
-
-
-
-
 exports.loginUsers= async(req ,res , next)=>{
     try{
       const { email, pwd } =req.body;
