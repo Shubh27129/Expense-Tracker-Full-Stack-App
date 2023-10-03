@@ -15,7 +15,8 @@ const Users = sequelize.define('users', {
         unique: true
         
     },
-    pwd:  Sequelize.STRING,   
+    pwd:  Sequelize.STRING,  
+    ispremiumuser: Sequelize.BOOLEAN
 });
 
 
