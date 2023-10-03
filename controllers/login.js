@@ -2,6 +2,12 @@ const Users= require('../models/signup')
 
 const bcrypt = require('bcrypt');
 
+const jwt= require('jsonwebtoken');
+
+function generateAccessToken(id, name)
+{
+    return jwt.sign({userId:id, name:name}, 'secretkey')
+}
 
 exports.loginUsers= async(req ,res , next)=>{
     try{
@@ -31,7 +37,7 @@ exports.loginUsers= async(req ,res , next)=>{
         //     throw new Error('Something went wrong')
         //    }
             if(result === true){
-                return res.status(200).json({success: true, message: "User logged in successfully"})
+                return res.status(200).json({success: true, message: "User logged in successfully", token: generateAccessToken(user[0].id, user[0].name)})
             }
             else{
             return res.status(400).json({success: false, message: 'Password is incorrect'})

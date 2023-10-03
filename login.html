@@ -43,7 +43,10 @@
                 console.log(loginDetails)
 
                 axios.post("http://localhost:3000/users/login",loginDetails).then((response)=>{
+                    alert(response.data.message)
              console.log(response)
+             localStorage.setItem('token', response.data.token)
+             window.location.href="./Expense Tracker/index.html"
            }).catch((err) =>{
             //console.log(err)
            // document.body.innerHTML= document.body.innerHTML+ "<h4>Error: User Already Exist</h4>"

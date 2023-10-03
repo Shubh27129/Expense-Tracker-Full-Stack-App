@@ -43,17 +43,16 @@
                 categoryList: e.target.categoryList.value
               
             }
-
+            const token  = localStorage.getItem('token')
             
-           axios.post("http://localhost:3000/expense/add-expense",obj)
+           axios.post("http://localhost:3000/expense/add-expense",obj, { headers: {"Authorization" : token} })
             .then((response)=>{
-              ShowonScreen(response.data)
+              ShowonScreen(response.data.expense)
               //console.log(response)
             }).catch((err)=>{
               document.body.innerHTML= document.body.innerHTML+ "<h4>Something Went Wrong</h4>"
               console.log(err)
             })
-
           }
 
           const deleteExpense=(postIdToDelete)=>{
@@ -70,15 +69,19 @@
 
           window.addEventListener("DOMContentLoaded",()=>{
 
-          axios.get("http://localhost:3000/expense/get-expense")
+            const token= localStorage.getItem('token')
+
+          axios.get("http://localhost:3000/expense/get-expense", {headers : {"Authorization" :token }})
             .then((response)=>{
-              // ShowonScreen(response.data)
+              console.log(response.data.expenses[0])
+              //ShowonScreen(response.data)
           
-              for(var i=0;i<response.data.length;i++)
+              for(var i=0;i<response.data.expenses.length;i++)
             {
-              ShowonScreen(response.data[i])
+              ShowonScreen(response.data.expenses[i])
             }
               //console.log(response)
+
             }).catch((err)=>{
               document.body.innerHTML= document.body.innerHTML+ "<h4>Something Went Wrong</h4>"
               console.log(err)
